@@ -1,6 +1,7 @@
 #Based on script Plot1.R
 #addind a DateTime column to the file with only (2 days of February)
 library(lubridate)
+edf <- subset(edf,Date=='1/2/2007' | Date =='2/2/2007')
 edf$DateTime <- dmy_hms(paste(edf$Date, edf$Time))
 #Setting my local Sys set local to English (to avoid displaying days in French)
 Sys.setlocale("LC_TIME", "C")
