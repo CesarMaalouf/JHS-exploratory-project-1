@@ -7,27 +7,17 @@ edf$DateTime <- dmy_hms(paste(edf$Date, edf$Time))
 Sys.setlocale("LC_TIME", "C")
 
 #Copy my plot to a PNG file
-dev.copy(png, file = "Plot4.png")
+dev.copy(png, file = "Plot3.png")
 
-par(mfrow = c(2, 2), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))
-
-{
-#Plotting the graph 1
-with(edf,plot(DateTime, Global_active_power, ylab="Global Active Power (kilowatts)",xlab="",type="l"))
-
-#Plotting the graph 2
-with(edf,plot(DateTime, Voltage, ,xlab="datetime",type="l"))
-
-#Plotting the graph 3
+#Plotting the graph
 
 plot(edf$DateTime, edf$Sub_metering_1, ylab="Energy sub metering",xlab="",col='Black',type = "l")
 lines(edf$DateTime,edf$Sub_metering_2, col = 'Red')
 lines(edf$DateTime,edf$Sub_metering_3, col = 'Blue')
 legend(x = 'topright',lwd = 1,col = c('Black','Red','Blue'),
-       legend = c('Sub_metering_1','Sub_metering_2','Sub_metering_3'),text.width = NULL)
-#Plotting the graph 4
-with(edf,plot(DateTime, Global_reactive_power, ,xlab="datetime",type="l"))
-}
+       legend = c('Sub_metering_1','Sub_metering_2','Sub_metering_3'))
+par(adj= 0.5)
+
 
 # Closing the PNG device
 dev.off()
